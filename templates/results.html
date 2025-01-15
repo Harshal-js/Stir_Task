@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>Twitter Trending Topics</title>
+    <style>
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Twitter Trending Topics</h1>
+    <p>These are the most happening topics as of {{ timestamp }}:</p>
+    
+    <ul>
+        {% for trend in trends %}
+            <li>{{ trend }}</li>
+        {% endfor %}
+    </ul>
+
+    <p>The IP address used for this query was <strong>{{ ip_address }}</strong>.</p>
+
+    <h2>JSON Extract from MongoDB:</h2>
+    <pre><code>{{ json_extract | tojson(indent=2) }}</code></pre>
+    
+    <a href="{{ url_for('run_script') }}">Click here to run the query again</a>
+</body>
+</html>
